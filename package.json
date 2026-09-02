@@ -1,0 +1,17 @@
+{
+  "name": "pi-bob",
+  "version": "0.1.0",
+  "description": "IBM Bob provider for the pi coding agent, with SSO login and automatic token refresh",
+  "license": "MIT",
+  "type": "module",
+  "keywords": ["pi", "pi-extension", "pi-provider", "bob", "ibm"],
+  "pi": {
+    "extensions": ["extensions/bob.ts"]
+  },
+  "devDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@types/node": "^22",
+    "typescript": "^5"
+  }
+}
