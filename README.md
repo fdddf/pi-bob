@@ -14,7 +14,7 @@ headers the gateway requires, and a User-Agent the WAF in front of it accepts.
 ## Install
 
 ```bash
-pi install git:github.com/USER/pi-bob
+pi install git:github.com/fdddf/pi-bob
 ```
 
 Then, inside pi:
@@ -33,7 +33,7 @@ pi --model bob/premium-ide
 To develop against a checkout instead:
 
 ```bash
-git clone https://github.com/USER/pi-bob && cd pi-bob
+git clone https://github.com/fdddf/pi-bob && cd pi-bob
 mkdir -p ~/.pi/agent/extensions
 ln -sfn "$PWD" ~/.pi/agent/extensions/pi-bob
 ```
