@@ -142,20 +142,25 @@ export default function (pi: ExtensionAPI) {
 			"x-team-id": `!cat ${TEAM_FILE}`,
 			"User-Agent": UA,
 		},
-		compat: {
-			supportsDeveloperRole: false,
-			supportsStore: false,
-			supportsReasoningEffort: false,
-			maxTokensField: "max_tokens",
-		},
 		models: [
 			{
 				id: "premium-ide",
 				name: "Bob Premium (Claude Sonnet)",
+				reasoning: false,
 				input: ["text", "image"],
 				contextWindow: 200000,
 				maxTokens: 32000,
 				cost: { input: 3.0, output: 15.0, cacheRead: 0.3, cacheWrite: 3.75 },
+				// pi reads `compat` per model, not per provider. The gateway validates the
+				// request body strictly and answers any unknown property with a bodyless 422,
+				// so anything OpenAI-only has to be turned off here.
+				compat: {
+					supportsStrictMode: false, // `tools[].function.strict` → 422
+					supportsStore: false,
+					supportsDeveloperRole: false,
+					supportsReasoningEffort: false,
+					maxTokensField: "max_tokens",
+				},
 			},
 		],
 		oauth: {

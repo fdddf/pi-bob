@@ -88,6 +88,11 @@ Note that `model/info` reports cost **per token** while pi's `cost` field is
 
 ## Caveats
 
+- The gateway validates the request body strictly: any property it does not know
+  — `tools[].function.strict`, `store`, `max_completion_tokens` — comes back as a
+  `422` that pi surfaces as `Error: 422 status code (no body)`. The model's
+  `compat` block turns those off. Note that pi reads `compat` per **model**, not
+  per provider; a `compat` on the provider object is silently ignored.
 - pi speaks the OpenAI wire format, so Anthropic `cache_control` blocks are never
   sent. Prompt caching does not apply and cost will be higher than Bob's own CLI.
 - pi does not report usage to Bob's telemetry endpoint; the gateway's own
